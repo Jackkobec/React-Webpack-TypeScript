@@ -12,7 +12,8 @@ module.exports = {
     ],
     output: {
         filename: "bundle.js",
-        path: __dirname + "/dist"
+        path: __dirname + "/dist",
+        publicPath: '/'// данный пас сделан чтобы работало обновление страницы и прямое обращение по URL
     },
 
     resolve: {
