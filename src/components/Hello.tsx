@@ -1,4 +1,5 @@
 import * as React from "react";
+import {get} from "../config/backend";
 
 type HelloState = {//это наш стейт
     name?: string;//каждое поле - это стейт
@@ -21,6 +22,7 @@ export class Hello extends React.Component<Props, HelloState> {
             lastName: 'lastName'
         }
     }
+
 
     //Если не планируется юзать пропсы и заполнять ими поля стейта
     // constructor() {
@@ -72,7 +74,7 @@ export class Hello extends React.Component<Props, HelloState> {
              означает, что при смене фокусас поля input будет вызван метод triggerValidation(fieldName),
              в который в качестве параметра будет передано наше  в виде строки т.к. аргумент метода
              не типизирован. Далее этот 'name' будет проверен на пксое значение и если так, то
-             в поле стейта fieldName, которое name запишется 'triggerValidation worked'
+             в поле стейта fieldName, которое name запишется 'triggerValidation worked'тж
              */
             <div>
                 <h1>Hello, { this.state.name } !</h1>
@@ -88,7 +90,7 @@ export class Hello extends React.Component<Props, HelloState> {
                     } }
                 />
                 <br></br>
-                <input value={"Value"}/>
+                <input value={"Value"} onChange={() => {}}/>
             </div>
         );
     }
