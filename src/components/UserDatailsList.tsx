@@ -2,6 +2,7 @@ import * as React from "react";
 import {get} from '../config/backend';
 import {UserTable} from "./UserTable";
 import {UserList} from "./UserList";
+import {UserIdTable} from "./UserIdTable";
 
 
 type User = {
@@ -14,7 +15,7 @@ type UsersState = {
     // users?: Array<any>; или без типизации
 }
 
-export class Users extends React.Component<any, UsersState> {
+export class UserDetailList extends React.Component<any, UsersState> {
     constructor(props) {
         super(props);
 
@@ -40,7 +41,7 @@ export class Users extends React.Component<any, UsersState> {
 
         return (
             <div>
-                <UserTable users={ this.state.users }/>
+                <UserIdTable users={ this.state.users }/>
                 <UserList users={ this.state.users }/>
             </div>
 
