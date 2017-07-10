@@ -1,4 +1,6 @@
 import * as React from "react";
+import * as mui from 'material-ui';
+import {TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui';
 import '../styles/style.css';
 
 type Person = {
@@ -40,6 +42,8 @@ export class ValidationSample extends React.Component<any, SampleState> {
     }
 
     render() {
+        const labelStyle = {fontSize: 34, color: '#ff9900'};
+
         let {errorText, person, error} = this.state;
 
         return (
@@ -89,10 +93,35 @@ export class ValidationSample extends React.Component<any, SampleState> {
                 </table>
                 <div style={ {marginTop: '10px'} }>
                     <input id="button1" type="button" value="Validate"
-                           onClick={ this.validate }
+                           onClick={ this.validateFirstName }
                     />
                 </div>
                 <h2>{ errorText }</h2>
+
+                <mui.RaisedButton label="Default"/>
+
+                <mui.Table fixedFooter={ true } fixedHeader={ true } selectable={ false } style={ {width: 1000} }>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHeaderColumn>ID</TableHeaderColumn>
+                            <TableHeaderColumn>Name</TableHeaderColumn>
+                            <TableHeaderColumn>Status</TableHeaderColumn>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        <TableRow selected={ true }>
+                            <TableRowColumn>1</TableRowColumn>
+                            <TableRowColumn>John Smith</TableRowColumn>
+                            <TableRowColumn>Employed</TableRowColumn>
+                            <TableRowColumn>
+                                <mui.SelectField
+                                    floatingLabelText={ 'Hello world' }
+                                    floatingLabelStyle={ labelStyle }
+                                />
+                            </TableRowColumn>
+                        </TableRow>
+                    </TableBody>
+                </mui.Table>
             </div >
         );
     }
@@ -114,14 +143,28 @@ export class ValidationSample extends React.Component<any, SampleState> {
         this.setPersonField(value, field);
     };
 
-    validate = () => {
-        if (this.state.person.firstName.length >= 7) {
+    /*validate = () => {
+     if (this.state.person.firstName.length >= 7) {
+     this.setState((prevState) => {
+     return {error: {...prevState.error, firstNameError: 'firstNameError'}}
+     });
+     } else {
+     this.setState((prevState) => {
+     return {error: {...prevState.error, firstNameError: 'OK'}}
+     });
+     }
+     };*/
+
+    validateFirstName = () => {
+        if (this.state.person.firstName.length >= 7
+            || this.state.person.secondName.length >= 7
+            || this.state.person.middleName.length >= 7) {
             this.setState((prevState) => {
                 return {error: {...prevState.error, firstNameError: 'firstNameError'}}
             });
         } else {
             this.setState((prevState) => {
-                return {error: {...prevState.error, firstNameError: ''}}
+                return {error: {...prevState.error, firstNameError: 'OK'}}
             });
         }
     };
