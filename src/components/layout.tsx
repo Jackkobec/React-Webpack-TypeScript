@@ -9,6 +9,8 @@ import {
 import spacing from 'material-ui/styles/spacing';
 import {fade} from 'material-ui/utils/colorManipulator';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import {CSSProperties} from "react";
+import Typography from 'material-ui/styles/typography';
 
 const asiaCreditBankTheme = getMuiTheme({
     spacing: spacing,
@@ -31,19 +33,89 @@ const asiaCreditBankTheme = getMuiTheme({
     }
 });
 
-export class Layout extends React.Component<any, any> {
+const MainBar = ({loggedIn}) => {
+    const styles = {
+        container: {
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            margin: 6,
+            paddingTop: 0,
+            letterSpacing: 0,
+            lineHeight: '64px',
+        } as CSSProperties,
+        title: {
+            fontSize: 22,
+            fontWeight: Typography.fontWeightNormal,
+        } as CSSProperties,
+        divider: {
+            borderLeft: '1px solid rgba(255,255,255,0.35)',
+            margin: '0 20px',
+            fontSize: 20
+        } as CSSProperties,
+        rightButton: {
+            alignSelf: 'flex-end'
+        } as CSSProperties,
+        menuButton: {
+            imageInput: {
+                // cursor: 'pointer',
+                // width: '100%',
+                // opacity: 0,
+            },
+            alignSelf: 'flex-end'
+        } as CSSProperties
+    };
+}
+
+interface LayoutProps {
+    loggedIn: boolean;
+    loading: boolean;
+}
+
+export class Layout extends React.Component<LayoutProps, any> {
     constructor(props) {
         super(props);
 
         this.state = {}
     }
 
+
     render() {
+        const styles = {
+            mainView: {
+                margin: '20px auto',
+                width: 1040,
+            },
+
+            leftGutter: {
+                transition: 'all 0.2s ease-out 0.1s',
+                marginLeft: undefined,
+            },
+
+            menuButton: {
+                imageInput: {
+                    // cursor: 'pointer',
+                    // position: 'absolute',
+                    // top: 0,
+                    // bottom: 0,
+                    // right: 0,
+                    // left: 0,
+                    // width: '100%',
+                    // opacity: 0,
+                },
+                // alignSelf: 'flex-end'
+            }
+        };
 
         return <h.MuiThemeProvider muiTheme={ asiaCreditBankTheme }>
-            <div>
-                { this.props.children }
+
+            <div style={ styles.leftGutter }>
+                <div style={ styles.mainView }>
+                    { this.props.children }
+                </div>
             </div>
+
         </h.MuiThemeProvider>
     }
+
 }
