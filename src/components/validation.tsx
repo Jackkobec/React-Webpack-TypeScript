@@ -1,14 +1,34 @@
 import * as React from "react";
 import * as mui from 'material-ui';
-import {TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui';
+import {FontIcon, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui';
 import '../styles/style.css';
+import {red700} from "material-ui/styles/colors";
 
+// Button style
+const styles = {
+    button: {
+        margin: 12,
+    },
+    exampleImageInput: {
+        cursor: 'pointer',
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        right: 0,
+        left: 0,
+        width: '100%',
+        opacity: 0,
+    },
+};
+
+// Fields
 interface Fields {
     firstName?: string;
     secondName?: string;
     middleName?: string;
 }
 
+// State
 interface State extends Fields {
     fieldErrors?: Fields;
 }
@@ -21,11 +41,13 @@ const constraints = {
     },
     secondName: {
         required: true,
-        maxLength: 7
+        maxLength: 7,
+        regexp: new RegExp('^[0-9]+$') // Регекспы - это не строка, задаются так или /^[0-9]+$/
     },
     middleName: {
         required: true,
-        maxLength: 7
+        maxLength: 7,
+        regexp: new RegExp('^[0-9]+$') // Регекспы - это не строка, задаются так или /^[0-9]+$/
     }
 };
 
@@ -54,13 +76,21 @@ export class Validation extends React.Component<any, State> {
         });
     }
 
+    private checkValidationOnBtnPress(nextState) {
+        [
+            'firstName', 'secondName', 'middleName'
+        ].forEach(fieldName => {
+                nextState.fieldErrors[fieldName] = message(constraints[fieldName], nextState[fieldName]);
+        });
+    }
+
     render() {
         return (
             <div>
                 <HomeWidget title={ 'Validation widget' }>
                     <div>
                         <mui.Table fixedFooter={true} fixedHeader={ true } selectable={ false }
-                                   style={ { width: 1000 } }>
+                                   style={ {width: 1000} }>
 
                             <TableBody displayRowCheckbox={ false }>
 
@@ -72,7 +102,7 @@ export class Validation extends React.Component<any, State> {
                                                        errorText={ this.state.fieldErrors.firstName }
                                                        floatingLabelText={ 'firstName' }
                                                        onChange={(val) => {
-                                                           this.setState({ firstName: (val.target as HTMLInputElement).value });
+                                                           this.setState({firstName: (val.target as HTMLInputElement).value});
                                                        }}
                                                        multiLine={ true }
                                         />
@@ -117,8 +147,11 @@ export class Validation extends React.Component<any, State> {
 
                         <mui.RaisedButton
                             label='Clean'
-                            primary={ true }
+                            secondary={true}
                             onTouchTap={ () => this.clean() }
+                            style={ styles.button }
+                            backgroundColor={ red700 }
+
                         />
                     </div>
                 </HomeWidget>
@@ -128,30 +161,29 @@ export class Validation extends React.Component<any, State> {
 
     // Delegate fields name for cleanInput() method
     clean = () => {
-        let firstName = this.cleanInput('firstName');
-        let secondName = this.cleanInput('secondName');
-        let middleName = this.cleanInput('middleName');
+        this.setState({firstName: '', secondName: '', middleName: ''}, () => {
+            this.setState({fieldErrors: []});
+        });
     };
-
-    // Call triggerClean() method
-    cleanInput(fieldName) {
-        this.triggerClean(fieldName);
-    }
-
-    // Set all fields value as empty string '' if current field value != null
-    triggerClean(fieldName) {
-        if (this.state[fieldName] != null) {
-            this.setState((a, b) => {
-                return {[fieldName]: ''}
-            });
-        }
-    }
 
     // Delegate fields name for validateInput() method
     validate = () => {
         let firstName = this.validateInput('firstName');
         let secondName = this.validateInput('secondName');
         let middleName = this.validateInput('middleName');
+
+        if (firstName && secondName && middleName) {
+            //TODO success
+            console.log("success");
+        } else {
+            //TODO fail
+
+            let nextState = Object.assign( {}, this.state);
+            this.checkValidationOnBtnPress(nextState);
+            this.setState(nextState);
+
+            console.log("fail");
+        }
 
     };
 
@@ -163,11 +195,9 @@ export class Validation extends React.Component<any, State> {
 
     // Set all fields value as empty string '' if current field value == null
     triggerValidation(fieldName) {
-        if (this.state[fieldName] == null) {
-            this.setState((a, b) => {
-                return {[fieldName]: ''}
-            });
-        }
+        if (!this.state[fieldName]) {
+            this.setState({[fieldName]: ''});
+        };
     }
 
 }
