@@ -1,6 +1,12 @@
 import * as React from "react";
 import * as mui from 'material-ui';
-import {FontIcon, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui';
+import {
+    Card,
+    CardActions, CardHeader, CardMedia, CardText, CardTitle, FlatButton, FontIcon, TableBody, TableHeader,
+    TableHeaderColumn,
+    TableRow,
+    TableRowColumn, Toggle
+} from 'material-ui';
 import '../styles/style.css';
 import {red700} from "material-ui/styles/colors";
 
@@ -30,7 +36,9 @@ interface Fields {
 
 // State
 interface State extends Fields {
-    fieldErrors?: Fields;
+    fieldErrors?: Fields,
+
+    expanded: boolean; // card view
 }
 
 const constraints = {
@@ -51,14 +59,14 @@ const constraints = {
     }
 };
 
-
 export class Validation extends React.Component<any, State> {
-
     constructor() {
         super();
 
         this.state = {
-            fieldErrors: {}
+            fieldErrors: {},
+
+            expanded: false // card view
         };
 
         /* this.getById = this.getById.bind(this);
@@ -67,6 +75,11 @@ export class Validation extends React.Component<any, State> {
     }
 
     componentWillUpdate(nextProps, nextState) {
+        /*Для каждого элемента массива если следующее состояние поля nextState[fieldName]
+         * не равно != текущему состоянию поля != this.state[fieldName] ,
+         * то устанавливаем в следующее состояниее стейта в fieldErrors[fieldName]
+         * сообщение из метода message(constraint: Constraint, value: string, regexSpecialTranslation?: string)
+         * // nextState.fieldErrors[fieldName] = message(constraints[fieldName], nextState[fieldName]);*/
         [
             'firstName', 'secondName', 'middleName'
         ].forEach(fieldName => {
@@ -76,26 +89,47 @@ export class Validation extends React.Component<any, State> {
         });
     }
 
+    /*Для каждого элемента массива  устанавливаем в следующее состояниее стейта в fieldErrors[fieldName]
+     * сообщение из метода message(constraint: Constraint, value: string, regexSpecialTranslation?: string)
+     * // nextState.fieldErrors[fieldName] = message(constraints[fieldName], nextState[fieldName]);*/
     private checkValidationOnBtnPress(nextState) {
         [
             'firstName', 'secondName', 'middleName'
         ].forEach(fieldName => {
-                nextState.fieldErrors[fieldName] = message(constraints[fieldName], nextState[fieldName]);
+            nextState.fieldErrors[fieldName] = message(constraints[fieldName], nextState[fieldName]);
         });
     }
+
+    handleExpandChange = (expanded) => { // card view
+        this.setState({expanded: expanded});
+    };
+
+    handleToggle = (event, toggle) => { // card view
+        this.setState({expanded: toggle});
+    };
+
+    handleExpand = () => { // card view
+        this.setState({expanded: true});
+    };
+
+    handleReduce = () => { // card view
+        this.setState({expanded: false});
+    };
 
     render() {
         return (
             <div>
+                {/*Home widget*/}
                 <HomeWidget title={ 'Validation widget' }>
                     <div>
+                        {/*Table*/}
                         <mui.Table fixedFooter={true} fixedHeader={ true } selectable={ false }
                                    style={ {width: 1000} }>
 
                             <TableBody displayRowCheckbox={ false }>
 
                                 <TableRow>
-                                    <TableRowColumn>{ 'firstName' }</TableRowColumn>
+                                    <TableRowColumn>{ 'Name' }</TableRowColumn>
                                     <TableRowColumn>
                                         <mui.TextField hintText={ 'firstName' }
                                                        value={ this.state.firstName}
@@ -109,9 +143,9 @@ export class Validation extends React.Component<any, State> {
                                     </TableRowColumn>
                                 </TableRow>
                                 <TableRow>
-                                    <TableRowColumn>{ 'secondName' }</TableRowColumn>
+                                    <TableRowColumn>{ 'Second Name' }</TableRowColumn>
                                     <TableRowColumn>
-                                        <mui.TextField hintText={ 'secondName' }
+                                        <mui.TextField hintText={ 'hintText secondName' }
                                                        value={ this.state.secondName}
                                                        errorText={ this.state.fieldErrors.secondName }
                                                        floatingLabelText={ 'secondName' }
@@ -123,7 +157,7 @@ export class Validation extends React.Component<any, State> {
                                     </TableRowColumn>
                                 </TableRow>
                                 <TableRow>
-                                    <TableRowColumn>{ 'middleName' }</TableRowColumn>
+                                    <TableRowColumn>{ 'Middle Name' }</TableRowColumn>
                                     <TableRowColumn>
                                         <mui.TextField hintText={ 'middleName' }
                                                        value={ this.state.middleName}
@@ -139,22 +173,61 @@ export class Validation extends React.Component<any, State> {
 
                             </TableBody>
                         </mui.Table>
+                        {/*Table end*/}
+                        {/*Buttons block*/}
                         <mui.RaisedButton
                             label='Validate'
                             primary={ true }
                             onTouchTap={ () => this.validate() }
                         />
-
                         <mui.RaisedButton
                             label='Clean'
                             secondary={true}
                             onTouchTap={ () => this.clean() }
                             style={ styles.button }
                             backgroundColor={ red700 }
-
                         />
+                        {/*Buttons block end*/}
                     </div>
                 </HomeWidget>
+                {/*Home widget end*/}
+
+                {/*Card view*/}
+                <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+                    <CardHeader
+                        title="URL Avatar"
+                        subtitle="Subtitle"
+                        avatar="https://cdn1.iconfinder.com/data/icons/logotypes/32/chrome-512.png"
+                        actAsExpander={true}
+                        showExpandableButton={true}
+                    />
+                    <CardText>
+                        <Toggle
+                            toggled={this.state.expanded}
+                            onToggle={this.handleToggle}
+                            labelPosition="right"
+                            label="This toggle controls the expanded state of the component."
+                        />
+                    </CardText>
+                    <CardMedia
+                        expandable={true}
+                        overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle"/>}
+                    >
+                        <img src="https://www.cosmos-online.ru/images/oboi//oboi-kosmos-57.jpg" alt=""/>
+                    </CardMedia>
+                    <CardTitle title="Card title" subtitle="Card subtitle" expandable={true}/>
+                    <CardText expandable={true}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
+                        Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
+                        Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+                    </CardText>
+                    <CardActions>
+                        <FlatButton label="Expand" onTouchTap={this.handleExpand}/>
+                        <FlatButton label="Reduce" onTouchTap={this.handleReduce}/>
+                    </CardActions>
+                </Card>
+                {/*Card view end*/}
             </div>
         )
     }
@@ -174,11 +247,12 @@ export class Validation extends React.Component<any, State> {
 
         if (firstName && secondName && middleName) {
             //TODO success
+            //todo тут вызов методв обращения в бэк
             console.log("success");
         } else {
             //TODO fail
 
-            let nextState = Object.assign( {}, this.state);
+            let nextState = Object.assign({}, this.state);
             this.checkValidationOnBtnPress(nextState);
             this.setState(nextState);
 
@@ -197,9 +271,9 @@ export class Validation extends React.Component<any, State> {
     triggerValidation(fieldName) {
         if (!this.state[fieldName]) {
             this.setState({[fieldName]: ''});
-        };
+        }
+        ;
     }
-
 }
 
 // Custom constraint names and types
