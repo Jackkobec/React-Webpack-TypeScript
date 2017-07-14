@@ -10,6 +10,10 @@ import {
 import '../styles/style.css';
 import {red700} from "material-ui/styles/colors";
 
+// Declare constant for image in the path: ../images/oboi-kosmos-57.jpg
+const spaceImg = require('../images/oboi-kosmos-57.jpg');
+const okImg = require('../images/ok-128.jpg')
+
 // Button style
 const styles = {
     button: {
@@ -193,11 +197,12 @@ export class Validation extends React.Component<any, State> {
                 {/*Home widget end*/}
 
                 {/*Card view*/}
+                {/*avatar="https://cdn1.iconfinder.com/data/icons/logotypes/32/chrome-512.png"*/}
                 <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
                     <CardHeader
                         title="URL Avatar"
                         subtitle="Subtitle"
-                        avatar="https://cdn1.iconfinder.com/data/icons/logotypes/32/chrome-512.png"
+                        avatar={ okImg }
                         actAsExpander={true}
                         showExpandableButton={true}
                     />
@@ -213,7 +218,7 @@ export class Validation extends React.Component<any, State> {
                         expandable={true}
                         overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle"/>}
                     >
-                        <img src="https://www.cosmos-online.ru/images/oboi//oboi-kosmos-57.jpg" alt=""/>
+                        <img src={ spaceImg } alt=""/>
                     </CardMedia>
                     <CardTitle title="Card title" subtitle="Card subtitle" expandable={true}/>
                     <CardText expandable={true}>
