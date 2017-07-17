@@ -11,7 +11,8 @@ import {Mans} from "./components/Man";
 import {Girls} from "./components/Girl";
 import {ValidationSample} from "./components/ValidationSample";
 import {Layout} from "./components/layout";
-import {Validation} from "./components/validation"; //Импорт компонента из проекта
+import {Validation} from "./components/validation";
+import {BootstrapTest} from "./components/BootsprapTest"; //Импорт компонента из проекта
 
 /*
  Сделано для того, чтобы пользователь при переходе на url-ы во время работы приложения
@@ -33,6 +34,7 @@ const App = () => <Router history={ browserHistory }>
         <Route path="/users/detail-list" component={ UserDetailList }/>
         <Route path="/validation-sample" component={ ValidationSample }/>
         <Route path="/validation" component={ Validation }/>
+        <Route path="/bootstrap" component={ BootstrapTest }/>
 
     </Route>
 

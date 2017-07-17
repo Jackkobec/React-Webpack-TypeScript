@@ -43,7 +43,7 @@ export class CustomMenu extends React.Component<any, any> {
                                                 <ul>
                                                     <li><a href="#">Stuff</a></li>
                                                     <li><a href="#">Things</a></li>
-                                                    <li><a href="#">Other Stuff</a></li>
+                                                    <li><a href="/bootstrap">Other Stuff</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
