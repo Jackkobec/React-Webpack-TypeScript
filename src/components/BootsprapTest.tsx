@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Button} from "react-bootstrap";
+import {Button, Modal} from "react-bootstrap";
 import {Trigger} from "./bootstrap/Trigger";
 
 // require('../styles/custom_menu.scss')
@@ -23,8 +23,10 @@ export class BootstrapTest extends React.Component<any, any> {
 
         return (
             <div>
+                {/*Рендер переменной с Bootstrap элементами*/}
                 { buttonsInstance }
 
+                {/*Рендер класса с Bootstrap элементами*/}
                 <Trigger />
 
             </div>
