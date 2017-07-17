@@ -11,6 +11,9 @@ import {fade} from 'material-ui/utils/colorManipulator';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {CSSProperties} from "react";
 import Typography from 'material-ui/styles/typography';
+import TabsExampleControlled from "./TabsExampleControlled";
+import AppBarExampleComposition from "./Login";
+import {CustomMenu} from "./CustomMenu";
 
 const asiaCreditBankTheme = getMuiTheme({
     spacing: spacing,
@@ -109,12 +112,24 @@ export class Layout extends React.Component<LayoutProps, any> {
 
         return <h.MuiThemeProvider muiTheme={ asiaCreditBankTheme }>
 
-            <div style={ styles.leftGutter }>
-                <div style={ styles.mainView }>
-                    { this.props.children }
-                </div>
-            </div>
+            <div>
+                {/*Тут мы можем отрендерить(отрисовать) компоненты, которые будут общие для всех страниц сайта,
+                 например меню или тулбар*/}
+                {/*Test common item*/}
+                {/*<TabsExampleControlled />*/}
 
+                {/*<AppBarExampleComposition />*/}
+
+                {/*Общий компонент для всего сайта по сути - всех вложенных роутов*/}
+                <CustomMenu />
+
+                <div style={ styles.leftGutter }>
+                    <div style={ styles.mainView }>
+                        { this.props.children }
+                    </div>
+                </div>
+
+            </div>
         </h.MuiThemeProvider>
     }
 

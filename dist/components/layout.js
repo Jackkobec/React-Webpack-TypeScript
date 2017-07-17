@@ -9,10 +9,10 @@ const asiaCreditBankTheme = getMuiTheme({
     spacing: spacing,
     fontFamily: 'Myriad ProKaz, Myriad Pro, Verdana, Tahoma, sans-serif',
     palette: {
-        primary1Color: '#f67828',
+        primary1Color: '#ff1300',
         primary2Color: '#ffcc66',
         primary3Color: '#996633',
-        accent1Color: '#666666',
+        accent1Color: '#1b3166',
         accent2Color: '#cccccc',
         accent3Color: '#666666',
         textColor: darkBlack,
