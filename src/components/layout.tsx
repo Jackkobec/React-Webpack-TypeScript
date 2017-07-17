@@ -14,6 +14,7 @@ import Typography from 'material-ui/styles/typography';
 import TabsExampleControlled from "./TabsExampleControlled";
 import AppBarExampleComposition from "./Login";
 import {CustomMenu} from "./CustomMenu";
+import { Button, Modal, ButtonToolbar, OverlayTrigger, Tooltip, Grid, Row, Col, Carousel} from "react-bootstrap";
 
 const asiaCreditBankTheme = getMuiTheme({
     spacing: spacing,
@@ -120,7 +121,12 @@ export class Layout extends React.Component<LayoutProps, any> {
 
                 {/*<AppBarExampleComposition />*/}
 
-                {/*Общий компонент для всего сайта по сути - всех вложенных роутов*/}
+                {/*Общие компоненты для всего сайта по сути - всех вложенных роутов*/}
+
+                {/*Carousel*/}
+                { carouselInstance }
+
+                {/*Свое меню*/}
                 <CustomMenu />
 
                 <div style={ styles.leftGutter }>
@@ -132,5 +138,35 @@ export class Layout extends React.Component<LayoutProps, any> {
             </div>
         </h.MuiThemeProvider>
     }
-
 }
+
+/*Carousel*/
+const carouselCCCPImg = require("../images/cccp.jpg");
+const carouselCCCP2Img = require("../images/cccp2.jpg");
+const carouselCCCP3Img = require("../images/cccp3.jpg");
+
+const carouselInstance = (
+    <Carousel>
+        <Carousel.Item>
+            <img width={1920} height={500} alt="1920x500" src={ carouselCCCPImg }/>
+            <Carousel.Caption>
+                <h3>First slide label</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+            <img width={1920} height={500} alt="1920x500" src={ carouselCCCP2Img }/>
+            <Carousel.Caption>
+                <h3>Second slide label</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+            <img width={1920} height={500} alt="1920x500" src={ carouselCCCP3Img }/>
+            <Carousel.Caption>
+                <h3>Third slide label</h3>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </Carousel.Caption>
+        </Carousel.Item>
+    </Carousel>
+);

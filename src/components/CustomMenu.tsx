@@ -43,14 +43,14 @@ export class CustomMenu extends React.Component<any, any> {
                                                 <ul>
                                                     <li><a href="#">Stuff</a></li>
                                                     <li><a href="#">Things</a></li>
-                                                    <li><a href="/bootstrap">Other Stuff</a></li>
+                                                    <li><a href="#">Other Stuff</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="#">Graphic Design</a></li>
+                            <li><a href="/bootstrap">Graphic Design</a></li>
                             <li><a href="#">Inspiration</a></li>
                             {/*Еще один способ для переходя по клику на другую страницу.
                              Чтобы работало в конструкторе нужно добавить:
