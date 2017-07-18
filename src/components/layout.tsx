@@ -15,6 +15,7 @@ import TabsExampleControlled from "./TabsExampleControlled";
 import AppBarExampleComposition from "./Login";
 import {CustomMenu} from "./CustomMenu";
 import { Button, Modal, ButtonToolbar, OverlayTrigger, Tooltip, Grid, Row, Col, Carousel} from "react-bootstrap";
+import {BootstrapNativeTest} from "./bootstrap/BootstrapNativeTest";
 
 const asiaCreditBankTheme = getMuiTheme({
     spacing: spacing,
@@ -87,8 +88,8 @@ export class Layout extends React.Component<LayoutProps, any> {
     render() {
         const styles = {
             mainView: {
-                margin: '20px auto',
-                width: 1040,
+                margin: '200px auto',
+                width: 1280,/*Ширина элементов на странице, ширина содержимого*/
             },
 
             leftGutter: {
@@ -128,6 +129,9 @@ export class Layout extends React.Component<LayoutProps, any> {
 
                 {/*Свое меню*/}
                 <CustomMenu />
+
+               {/* Native bootstrap
+                <BootstrapNativeTest />*/}
 
                 <div style={ styles.leftGutter }>
                     <div style={ styles.mainView }>

@@ -51,7 +51,7 @@ export class CustomMenu extends React.Component<any, any> {
                                 </ul>
                             </li>
                             <li><a href="/bootstrap">Graphic Design</a></li>
-                            <li><a href="#">Inspiration</a></li>
+                            <li><a href="/cv">Inspiration</a></li>
                             {/*Еще один способ для переходя по клику на другую страницу.
                              Чтобы работало в конструкторе нужно добавить:
                              static contextTypes = {

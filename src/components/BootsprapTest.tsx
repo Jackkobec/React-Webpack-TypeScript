@@ -21,8 +21,6 @@ export class BootstrapTest extends React.Component<any, any> {
 
 
     render() {
-
-
         return (
             <div>
                 {/*Рендер переменной с Bootstrap элементами*/}

@@ -12,7 +12,8 @@ import {Girls} from "./components/Girl";
 import {ValidationSample} from "./components/ValidationSample";
 import {Layout} from "./components/layout";
 import {Validation} from "./components/validation";
-import {BootstrapTest} from "./components/BootsprapTest"; //Импорт компонента из проекта
+import {BootstrapTest} from "./components/BootsprapTest";
+import {BootstrapNativeTest} from "./components/bootstrap/BootstrapNativeTest"; //Импорт компонента из проекта
 
 /*
  Сделано для того, чтобы пользователь при переходе на url-ы во время работы приложения
@@ -37,6 +38,8 @@ const App = () => <Router history={ browserHistory }>
         <Route path="/bootstrap" component={ BootstrapTest }/>
 
     </Route>
+
+    <Route path="/cv" component={ BootstrapNativeTest }/>
 
     <Route path="/handbooks" component={ CommonList }>
         <Route path="users" component={ Users }/>
