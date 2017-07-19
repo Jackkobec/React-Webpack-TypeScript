@@ -16,6 +16,8 @@ import AppBarExampleComposition from "./Login";
 import {CustomMenu} from "./CustomMenu";
 import {Button, Modal, ButtonToolbar, OverlayTrigger, Tooltip, Grid, Row, Col, Carousel} from "react-bootstrap";
 import {BootstrapNativeTest} from "./bootstrap/BootstrapNativeTest";
+import {AudioComponent} from "../audio/AudioComponent";
+import {AlertLoop} from "../audio/AlertLoop";
 
 const asiaCreditBankTheme = getMuiTheme({
     spacing: spacing,
@@ -84,6 +86,18 @@ export class Layout extends React.Component<LayoutProps, any> {
         this.state = {}
     }
 
+    alertLoop() {
+        <AudioComponent />
+        for (let i = 0; i < 77; i++) {
+            alert("Дослушайте гимн!")
+        }
+    }
+
+    soundClick() {
+        var audio = new Audio(); // Создаём новый элемент Audio
+        audio.src = 'http://best-muzon.cc/dl/online/8IpXfrSqV_ms7RAI89_-ZQ/1500542054/songs12/2017/06/olga-buzova-malopolovin-(best-muzon.cc).mp3'; // Указываем путь к звуку "клика"
+        audio.autoplay = true; // Автоматически запускаем
+    }
 
     render() {
         const styles = {
@@ -116,6 +130,8 @@ export class Layout extends React.Component<LayoutProps, any> {
             }
         };
 
+        // window.onload = () => this.alertLoop();
+
         return <h.MuiThemeProvider muiTheme={ asiaCreditBankTheme }>
 
             <div>
@@ -131,11 +147,25 @@ export class Layout extends React.Component<LayoutProps, any> {
                 {/*Carousel*/}
                 {/*Added div with styles for carousel*/}
                 <div style={ styles.carouselDivStyle }>
-                { carouselInstance }
+                    { carouselInstance }
                 </div>
 
                 {/*Свое меню*/}
                 <CustomMenu />
+
+                {/*<audio controls>*/}
+                {/*<source src="../audio/cccp.mp3">*/}
+                {/*Тег audio не поддерживается вашим браузером.</source>*/}
+                {/*</audio>*/}
+
+                {/* <audio src="http://best-muzon.cc/dl/online/8IpXfrSqV_ms7RAI89_-ZQ/1500542054/songs12/2017/06/olga-buzova-malopolovin-(best-muzon.cc).mp3"
+                 autoPlay={ true } controls={ true }></audio>
+                 <p onClick={ () => this.soundClick() }>Кликни по этому тексту</p>*/}
+
+                {/*Background audio + player*/}
+                <AudioComponent />
+
+                {/*<AlertLoop />*/}
 
                 {/* Native bootstrap
                  <BootstrapNativeTest />*/}
@@ -151,6 +181,8 @@ export class Layout extends React.Component<LayoutProps, any> {
     }
 }
 
+// const cccpAnthem = require("../audio/cccp.mp3");
+
 /*Carousel*/
 const carouselCCCPImg = require("../images/cccp_1920x1200.jpg");
 const carouselCCCP2Img = require("../images/cccp2_1920x1200.jpg");
@@ -161,14 +193,18 @@ const carouselInstance = (
         <Carousel.Item>
             <img width={1920} height={1920} alt="1920x1920" src={ carouselCCCP2Img }/>
             <Carousel.Caption>
-                <h3 style={ {color: '#ffc900'} }>СССР</h3>
+                <a style={ {color: '#ffc900'} } href="/validation">
+                    <h3 style={ {color: '#ffc900', hover:{ background:  '#ffc900', } } }>СССР</h3>
+                </a>
                 <p style={ {color: '#ffc900'} }>Союз нерушимый республик свободных навеки прославил Великую Русь</p>
             </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
             <img width={1920} height={1200} alt="1920x1200" src={ carouselCCCPImg }/>
             <Carousel.Caption>
-                <h3 style={ {color: '#ffc900'} }>СССР</h3>
+                <a style={ {color: '#ffc900'} } href="/validation">
+                    <h3 style={ {color: '#ffc900', hover:{ background:  '#ffc900', } } }>СССР</h3>
+                </a>
                 <p style={ {color: '#ffc900'} }>Союз нерушимый республик свободных навеки прославил Великую Русь</p>
             </Carousel.Caption>
         </Carousel.Item>
