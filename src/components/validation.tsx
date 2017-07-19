@@ -9,6 +9,7 @@ import {
 } from 'material-ui';
 import '../styles/style.css';
 import {red700} from "material-ui/styles/colors";
+import {get} from "../config/backend";
 
 // Declare constant for image in the path: ../images/oboi-kosmos-57.jpg
 const spaceImg = require('../images/oboi-kosmos-57.jpg');
@@ -41,25 +42,24 @@ interface Fields {
 // State
 interface State extends Fields {
     fieldErrors?: Fields,
-
     expanded: boolean; // card view
 }
 
 const constraints = {
     firstName: {
         required: true,
-        maxLength: 7,
-        regexp: new RegExp('^[0-9]+$') // Регекспы - это не строка, задаются так или /^[0-9]+$/
+        maxLength: 22,
+        regexp: new RegExp('^[0-9A-Za-zА-Яа-я]+$') // Регекспы - это не строка, задаются так или /^[0-9]+$/
     },
     secondName: {
         required: true,
-        maxLength: 7,
-        regexp: new RegExp('^[0-9]+$') // Регекспы - это не строка, задаются так или /^[0-9]+$/
+        maxLength: 22,
+        regexp: new RegExp('^[0-9A-Za-zА-Яа-я]+$') // Регекспы - это не строка, задаются так или /^[0-9]+$/
     },
     middleName: {
         required: true,
-        maxLength: 7,
-        regexp: new RegExp('^[0-9]+$') // Регекспы - это не строка, задаются так или /^[0-9]+$/
+        maxLength: 22,
+        regexp: new RegExp('^[0-9A-Za-zА-Яа-я]+$') // Регекспы - это не строка, задаются так или /^[0-9]+$/
     }
 };
 
@@ -76,6 +76,14 @@ export class Validation extends React.Component<any, State> {
         /* this.getById = this.getById.bind(this);
          this.update = this.update.bind(this);
          this.validate = this.validate.bind(this);*/
+    }
+
+    componentWillMount() {
+        get('/api/users/fio')
+            .then((fioDto: Fields) => {
+                this.setState({ firstName: fioDto.firstName, secondName: fioDto.secondName, middleName: fioDto.middleName })
+            })
+            .catch(e => console.log(e));
     }
 
     componentWillUpdate(nextProps, nextState) {
@@ -312,7 +320,7 @@ export function message(constraint: Constraint, value: string, regexSpecialTrans
 
     if (value.length == 0) return 'value.length == 0';
 
-    if (value.length >= 7) return 'length error!!'
+    if (value.length >= 22) return 'length error!!'
 
     if (constraint.regexp) {
         // if (!value.match(new RegExp(constraint.regexp)))
