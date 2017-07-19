@@ -23,7 +23,7 @@ export class CustomMenu extends React.Component<any, any> {
                 <div id="container">
                     <nav>
                         <ul>
-                            <li><a href="/validation">Home</a></li>
+                            <li><a href="/validation">Фойе</a></li>
                             <li><a href="#">WordPress</a>
                                 <ul>
                                     <li><a href="#">Themes</a></li>

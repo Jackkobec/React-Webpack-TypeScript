@@ -14,14 +14,14 @@ import Typography from 'material-ui/styles/typography';
 import TabsExampleControlled from "./TabsExampleControlled";
 import AppBarExampleComposition from "./Login";
 import {CustomMenu} from "./CustomMenu";
-import { Button, Modal, ButtonToolbar, OverlayTrigger, Tooltip, Grid, Row, Col, Carousel} from "react-bootstrap";
+import {Button, Modal, ButtonToolbar, OverlayTrigger, Tooltip, Grid, Row, Col, Carousel} from "react-bootstrap";
 import {BootstrapNativeTest} from "./bootstrap/BootstrapNativeTest";
 
 const asiaCreditBankTheme = getMuiTheme({
     spacing: spacing,
     fontFamily: 'Myriad ProKaz, Myriad Pro, Verdana, Tahoma, sans-serif',
     palette: {
-        primary1Color: '#ff1300',
+        primary1Color: '#e61400',
         primary2Color: '#ffcc66',
         primary3Color: '#996633',
         accent1Color: '#1b3166',
@@ -70,7 +70,7 @@ const MainBar = ({loggedIn}) => {
             alignSelf: 'flex-end'
         } as CSSProperties
     };
-}
+};
 
 interface LayoutProps {
     loggedIn: boolean;
@@ -89,7 +89,7 @@ export class Layout extends React.Component<LayoutProps, any> {
         const styles = {
             mainView: {
                 margin: '200px auto',
-                width: 1280,/*Ширина элементов на странице, ширина содержимого*/
+                width: 1280, /*Ширина элементов на странице, ширина содержимого*/
             },
 
             leftGutter: {
@@ -109,6 +109,10 @@ export class Layout extends React.Component<LayoutProps, any> {
                     // opacity: 0,
                 },
                 // alignSelf: 'flex-end'
+            },
+
+            carouselDivStyle: {
+                // height: 0, // Если height: 0 - будет пересекаться с остальными элементами.
             }
         };
 
@@ -125,13 +129,16 @@ export class Layout extends React.Component<LayoutProps, any> {
                 {/*Общие компоненты для всего сайта по сути - всех вложенных роутов*/}
 
                 {/*Carousel*/}
+                {/*Added div with styles for carousel*/}
+                <div style={ styles.carouselDivStyle }>
                 { carouselInstance }
+                </div>
 
                 {/*Свое меню*/}
                 <CustomMenu />
 
-               {/* Native bootstrap
-                <BootstrapNativeTest />*/}
+                {/* Native bootstrap
+                 <BootstrapNativeTest />*/}
 
                 <div style={ styles.leftGutter }>
                     <div style={ styles.mainView }>
@@ -145,32 +152,32 @@ export class Layout extends React.Component<LayoutProps, any> {
 }
 
 /*Carousel*/
-const carouselCCCPImg = require("../images/cccp.jpg");
-const carouselCCCP2Img = require("../images/cccp2.jpg");
-const carouselCCCP3Img = require("../images/cccp3.jpg");
+const carouselCCCPImg = require("../images/cccp_1920x1200.jpg");
+const carouselCCCP2Img = require("../images/cccp2_1920x1200.jpg");
+const carouselCCCP3Img = require("../images/cccp3_1920x1200.jpg");
 
 const carouselInstance = (
     <Carousel>
         <Carousel.Item>
-            <img width={1920} height={500} alt="1920x500" src={ carouselCCCPImg }/>
+            <img width={1920} height={1920} alt="1920x1920" src={ carouselCCCP2Img }/>
             <Carousel.Caption>
-                <h3>СССР</h3>
-                <p>Союз нерушимый республик свободных навеки прославил Великую Русь</p>
+                <h3 style={ {color: '#ffc900'} }>СССР</h3>
+                <p style={ {color: '#ffc900'} }>Союз нерушимый республик свободных навеки прославил Великую Русь</p>
             </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-            <img width={1920} height={500} alt="1920x500" src={ carouselCCCP2Img }/>
+            <img width={1920} height={1200} alt="1920x1200" src={ carouselCCCPImg }/>
             <Carousel.Caption>
-                <h3>СССР</h3>
-                <p>Союз нерушимый республик свободных навеки прославил Великую Русь</p>
+                <h3 style={ {color: '#ffc900'} }>СССР</h3>
+                <p style={ {color: '#ffc900'} }>Союз нерушимый республик свободных навеки прославил Великую Русь</p>
             </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item>
-            <img width={1920} height={500} alt="1920x500" src={ carouselCCCP3Img }/>
-            <Carousel.Caption>
-                <h3>СССР</h3>
-                <p>Союз нерушимый республик свободных навеки прославил Великую Русь</p>
-            </Carousel.Caption>
-        </Carousel.Item>
+        {/*<Carousel.Item>
+         <img width={1920} height={1200} alt="1920x1200" src={ carouselCCCP3Img }/>
+         <Carousel.Caption>
+         <h3>СССР</h3>
+         <p>Союз нерушимый республик свободных навеки прославил Великую Русь</p>
+         </Carousel.Caption>
+         </Carousel.Item>*/}
     </Carousel>
 );

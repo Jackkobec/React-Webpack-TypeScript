@@ -130,13 +130,13 @@ export class Validation extends React.Component<any, State> {
 
     render() {
         return (
-            <div>
+            <div style={ {backgroundColor: '#ffc900' } }>
                 {/*Home widget*/}
-                <HomeWidget title={ 'Validation widget' }>
+                <HomeWidget title={ 'Validation widget' } >
                     <div>
                         {/*Table*/}
                         <mui.Table fixedFooter={true} fixedHeader={ true } selectable={ false }
-                                   style={ {width: 1000} }>
+                                   style={ {width: 1000, backgroundColor: '#ffc900'} }>
 
                             <TableBody displayRowCheckbox={ false }>
 
@@ -332,7 +332,7 @@ export function message(constraint: Constraint, value: string, regexSpecialTrans
 
 /** For use on the HomePage only */
 export const HomeWidget = ({title, progress = undefined, children = undefined}: { title: string, progress?: React.ReactElement<any>, children?: React.ReactElement<any> }) => (
-    <mui.Paper style={ {marginBottom: 20} }>
+    <mui.Paper style={ {marginBottom: 20, backgroundColor: '#ffc900'} }>
         <Header text={ title }/>
         { progress }
         <Content>{ children }</Content>
