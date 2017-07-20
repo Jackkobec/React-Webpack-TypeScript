@@ -76,7 +76,7 @@ module.exports = {
                 loader: 'url-loader?limit=8192'
             },
             {
-                test: /\.(ttf|eot|svg|woff2?)(\?[a-z0-9]+)?$/,
+                test: /\.(ttf|eot|svg|woff2|mp3?)(\?[a-z0-9]+)?$/,  /*added mp3*/
                 loader: 'file-loader'
             }
         ]
