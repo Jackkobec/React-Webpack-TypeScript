@@ -191,7 +191,7 @@ const carouselCCCP3Img = require("../images/cccp3_1920x1200.jpg");
 const carouselInstance = (
     <Carousel>
         <Carousel.Item>
-            <img width={1920} height={1920} alt="1920x1920" src={ carouselCCCP2Img }/>
+            <img width={1920} height={1920} alt="1920x1200" src={ carouselCCCP2Img }/>
             <Carousel.Caption>
                 <a style={ {color: '#ffc900'} } href="/validation">
                     <h3 style={ {color: '#ffc900', hover:{ background:  '#ffc900', } } }>СССР</h3>
@@ -201,6 +201,16 @@ const carouselInstance = (
         </Carousel.Item>
         <Carousel.Item>
             <img width={1920} height={1200} alt="1920x1200" src={ carouselCCCPImg }/>
+            <Carousel.Caption>
+                <a style={ {color: '#ffc900'} } href="/validation">
+                    <h3 style={ {color: '#ffc900', hover:{ background:  '#ffc900', } } }>СССР</h3>
+                </a>
+                <p style={ {color: '#ffc900'} }>Союз нерушимый республик свободных навеки прославил Великую Русь</p>
+            </Carousel.Caption>
+        </Carousel.Item>
+
+        <Carousel.Item>
+            <img width={1920} height={1920} alt="1920x1200" src={ carouselCCCP2Img }/>
             <Carousel.Caption>
                 <a style={ {color: '#ffc900'} } href="/validation">
                     <h3 style={ {color: '#ffc900', hover:{ background:  '#ffc900', } } }>СССР</h3>

@@ -1,8 +1,8 @@
 import * as React from "react";
+import '../../styles/bootstrap-native.css'
 // import {Button, ButtonToolbar, Col, Grid, Modal, OverlayTrigger, Row, Tooltip} from "react-bootstrap";
 
-
-require('../../styles/bootstrap-native.css')
+require('../../styles/bootstrap-native.css');
 
 export class BootstrapNativeTest extends React.Component<any, any> {
     constructor(props) {
@@ -30,12 +30,12 @@ export class BootstrapNativeTest extends React.Component<any, any> {
                         <ul id="accordion" className="accordion">
                             <li>
                                 <div className="col col_4 iamgurdeep-pic">
-                                    <img className="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan" src="http://www.webncc.in/images/gurdeeposahan.jpg"></img>
+                                    <img className="img-responsive iamgurdeeposahan" alt="iamgurdeeposahan" src="http://www.webncc.in/images/gurdeeposahan.jpg"/>
                                         <div className="edit-pic">
-                                            <a href="https://web.facebook.com/iamgurdeeposahan" target="_blank" className="fa fa-facebook"></a>
-                                            <a href="https://www.instagram.com/gurdeeposahan/" target="_blank" className="fa fa-instagram"></a>
-                                            <a href="https://twitter.com/gurdeeposahan1" target="_blank" className="fa fa-twitter"></a>
-                                            <a href="https://plus.google.com/u/0/105032594920038016998" target="_blank" className="fa fa-google"></a>
+                                            <a href="https://web.facebook.com/iamgurdeeposahan" target="_blank" className="fa fa-facebook"/>
+                                            <a href="https://www.instagram.com/gurdeeposahan/" target="_blank" className="fa fa-instagram"/>
+                                            <a href="https://twitter.com/gurdeeposahan1" target="_blank" className="fa fa-twitter"/>
+                                            <a href="https://plus.google.com/u/0/105032594920038016998" target="_blank" className="fa fa-google"/>
 
 
 
@@ -50,9 +50,9 @@ export class BootstrapNativeTest extends React.Component<any, any> {
 
                                             <ul className="nav navbar-nav">
                                                 <li className="dropdown">
-                                                    <a href="#" className="dropdown-toggle" data-toggle="dropdown"><span className="fa fa-ellipsis-v pull-right"></span></a>
+                                                    <a href="#" className="dropdown-toggle" data-toggle="dropdown"><span className="fa fa-ellipsis-v pull-right"/></a>
                                                     <ul className="dropdown-menu pull-right">
-                                                        <li><a href="#">Video Call <i className="fa fa-video-camera"></i></a></li>
+                                                        <li><a href="#">Video Call <i className="fa fa-video-camera"/></a></li>
                                                         <li><a href="#">Poke <i className="fa fa-hand-o-right"></i></a></li>
                                                         <li><a href="#">Report <i className="fa fa-bug"></i></a></li>
                                                         <li><a href="#">Block <i className="fa fa-lock"></i></a></li>
