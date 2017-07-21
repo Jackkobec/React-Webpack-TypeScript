@@ -16,7 +16,7 @@ export const AudioComponent = () => {
 
     return (
         <div id="backgroundaudio">
-            <i className="fa fa-volume-up"></i>
+            <i className="fa fa-volume-up fa-red"></i>
             <audio autoPlay={ true } controls={ true } loop={ false } preload="">
                 <source src={ cccpMp3 } type="audio/mpeg"></source>
                 Your browser does not support the audio element.

@@ -30,8 +30,11 @@
     display: block;
     background: #ffc900;
     padding: 12px;
-    width: 50px;
+    width: 60px;
     float: none;
     margin-bottom: -1px;
     z-index: 9999;
+}
+.fa-red{
+    color: #940101;
 }
