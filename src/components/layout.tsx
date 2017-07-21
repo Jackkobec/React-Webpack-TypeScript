@@ -158,9 +158,9 @@ export class Layout extends React.Component<LayoutProps, any> {
                 {/*Тег audio не поддерживается вашим браузером.</source>*/}
                 {/*</audio>*/}
 
-                {/* <audio src="http://best-muzon.cc/dl/online/8IpXfrSqV_ms7RAI89_-ZQ/1500542054/songs12/2017/06/olga-buzova-malopolovin-(best-muzon.cc).mp3"
-                 autoPlay={ true } controls={ true }></audio>
-                 <p onClick={ () => this.soundClick() }>Кликни по этому тексту</p>*/}
+                 {/*<audio src="http://best-muzon.cc/dl/online/8IpXfrSqV_ms7RAI89_-ZQ/1500542054/songs12/2017/06/olga-buzova-malopolovin-(best-muzon.cc).mp3"
+                 autoPlay={ true } controls={ true }></audio>*/}
+                {/* <p onClick={ () => this.soundClick() }>Кликни по этому тексту</p>*/}
 
                 {/*Background audio + player*/}
                 <AudioComponent />
@@ -189,9 +189,9 @@ const carouselCCCP2Img = require("../images/cccp2_1920x1200.jpg");
 const carouselCCCP3Img = require("../images/cccp3_1920x1200.jpg");
 
 const carouselInstance = (
-    <Carousel>
+    <Carousel pauseOnHover={ false }>
         <Carousel.Item>
-            <img width={1920} height={1920} alt="1920x1200" src={ carouselCCCP2Img }/>
+            <img width={1920} height={1280} alt="1920x1280" src={ carouselCCCP2Img }/>
             <Carousel.Caption>
                 <a style={ {color: '#ffc900'} } href="/validation">
                     <h3 style={ {color: '#ffc900', hover:{ background:  '#ffc900', } } }>СССР</h3>
@@ -200,7 +200,7 @@ const carouselInstance = (
             </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-            <img width={1920} height={1200} alt="1920x1200" src={ carouselCCCPImg }/>
+            <img width={1920} height={1280} alt="1920x1280" src={ carouselCCCPImg }/>
             <Carousel.Caption>
                 <a style={ {color: '#ffc900'} } href="/validation">
                     <h3 style={ {color: '#ffc900', hover:{ background:  '#ffc900', } } }>СССР</h3>
@@ -210,7 +210,7 @@ const carouselInstance = (
         </Carousel.Item>
 
         <Carousel.Item>
-            <img width={1920} height={1920} alt="1920x1200" src={ carouselCCCP2Img }/>
+            <img width={1920} height={1280} alt="1920x1280" src={ carouselCCCP2Img }/>
             <Carousel.Caption>
                 <a style={ {color: '#ffc900'} } href="/validation">
                     <h3 style={ {color: '#ffc900', hover:{ background:  '#ffc900', } } }>СССР</h3>
