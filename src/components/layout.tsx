@@ -188,6 +188,8 @@ const carouselCCCPImg = require("../images/cccp_1920x1200.jpg");
 const carouselCCCP2Img = require("../images/cccp2_1920x1200.jpg");
 const carouselCCCP3Img = require("../images/cccp3_2133x1200.jpg");
 const carouselCCCP4Img = require("../images/testMap.png");
+const carouselCCCP5Img = require("../images/cccp4_2133x1200.jpg");
+const carouselCCCP7Img = require("../images/cccp5_2133x1200.png");
 
 const carouselInstance = (
     <Carousel pauseOnHover={ false }>
@@ -213,11 +215,24 @@ const carouselInstance = (
         <Carousel.Item>
             <img width={2133} height={1200} alt="2133x1200" src={ carouselCCCP3Img }/>
             <Carousel.Caption>
-
             </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
             <img width={2133} height={1200} alt="2133x1200" src={ carouselCCCP4Img }/>
+            <Carousel.Caption>
+                <a style={ {color: '#ffc900'} } href="/validation">
+                    <h3 style={ {color: '#ffc900', hover:{ background:  '#ffc900', } } }>СССР</h3>
+                </a>
+                <p style={ {color: '#ffc900'} }>Союз нерушимый республик свободных навеки прославил Великую Русь</p>
+            </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+            <img width={2133} height={1200} alt="2133x1200" src={ carouselCCCP5Img }/>
+            <Carousel.Caption>
+            </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+            <img width={2133} height={1200} alt="2133x1200" src={ carouselCCCP7Img }/>
             <Carousel.Caption>
                 <a style={ {color: '#ffc900'} } href="/validation">
                     <h3 style={ {color: '#ffc900', hover:{ background:  '#ffc900', } } }>СССР</h3>
