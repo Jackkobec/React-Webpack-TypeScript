@@ -186,12 +186,13 @@ export class Layout extends React.Component<LayoutProps, any> {
 /*Carousel*/
 const carouselCCCPImg = require("../images/cccp_1920x1200.jpg");
 const carouselCCCP2Img = require("../images/cccp2_1920x1200.jpg");
-const carouselCCCP3Img = require("../images/cccp3_1920x1200.jpg");
+const carouselCCCP3Img = require("../images/cccp3_2133x1200.jpg");
+const carouselCCCP4Img = require("../images/testMap.png");
 
 const carouselInstance = (
     <Carousel pauseOnHover={ false }>
         <Carousel.Item>
-            <img width={1920} height={1280} alt="1920x1280" src={ carouselCCCP2Img }/>
+            <img width={2133} height={1200} alt="2133x1200" src={ carouselCCCP2Img }/>
             <Carousel.Caption>
                 <a style={ {color: '#ffc900'} } href="/validation">
                     <h3 style={ {color: '#ffc900', hover:{ background:  '#ffc900', } } }>СССР</h3>
@@ -200,7 +201,7 @@ const carouselInstance = (
             </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-            <img width={1920} height={1280} alt="1920x1280" src={ carouselCCCPImg }/>
+            <img width={2133} height={1200} alt="2133x1200" src={ carouselCCCPImg }/>
             <Carousel.Caption>
                 <a style={ {color: '#ffc900'} } href="/validation">
                     <h3 style={ {color: '#ffc900', hover:{ background:  '#ffc900', } } }>СССР</h3>
@@ -210,7 +211,13 @@ const carouselInstance = (
         </Carousel.Item>
 
         <Carousel.Item>
-            <img width={1920} height={1280} alt="1920x1280" src={ carouselCCCP2Img }/>
+            <img width={2133} height={1200} alt="2133x1200" src={ carouselCCCP3Img }/>
+            <Carousel.Caption>
+
+            </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+            <img width={2133} height={1200} alt="2133x1200" src={ carouselCCCP4Img }/>
             <Carousel.Caption>
                 <a style={ {color: '#ffc900'} } href="/validation">
                     <h3 style={ {color: '#ffc900', hover:{ background:  '#ffc900', } } }>СССР</h3>
