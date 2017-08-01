@@ -78,10 +78,21 @@ export class Validation extends React.Component<any, State> {
          this.validate = this.validate.bind(this);*/
     }
 
-    componentWillMount() {
+    /*componentWillMount() {
         get('/api/users/fio')
             .then((fioDto: Fields) => {
                 this.setState({ firstName: fioDto.firstName, secondName: fioDto.secondName, middleName: fioDto.middleName })
+            })
+            .catch(e => console.log(e));
+    }*/
+
+    /*
+     this.setState({ ...fioDto }) - мерджим поля из fioDto c полями стейта, совпадающие по названию поля стейта заполняться из fioDto
+     */
+    componentWillMount() {
+        get('/api/users/fio')
+            .then((fioDto: Fields) => {
+                this.setState({ ...fioDto })
             })
             .catch(e => console.log(e));
     }

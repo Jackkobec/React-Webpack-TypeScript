@@ -1,0 +1,8 @@
+Object.assign мерджит левую часть с правой частью (в левую). В примере ниже item мерджится с полем nameDeposit: val. При этом в объекте item есть объявленное поле nameDeposit
+Если в объекте item не будет данного поля, то оно будет добавлено( информация не проверена );
+
+updateBack={ ( val ) => { return put('/deposits/update', Object.assign(item, { nameDeposit: val })); } }
+
+Второй способ записи:
+
+updateBack={ ( val ) => { return put('/deposits/update', { ...item, nameDeposit: val }); } }
