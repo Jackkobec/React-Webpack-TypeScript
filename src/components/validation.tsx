@@ -79,12 +79,12 @@ export class Validation extends React.Component<any, State> {
     }
 
     /*componentWillMount() {
-        get('/api/users/fio')
-            .then((fioDto: Fields) => {
-                this.setState({ firstName: fioDto.firstName, secondName: fioDto.secondName, middleName: fioDto.middleName })
-            })
-            .catch(e => console.log(e));
-    }*/
+     get('/api/users/fio')
+     .then((fioDto: Fields) => {
+     this.setState({ firstName: fioDto.firstName, secondName: fioDto.secondName, middleName: fioDto.middleName })
+     })
+     .catch(e => console.log(e));
+     }*/
 
     /*
      this.setState({ ...fioDto }) - мерджим поля из fioDto c полями стейта, совпадающие по названию поля стейта заполняться из fioDto
@@ -92,10 +92,25 @@ export class Validation extends React.Component<any, State> {
     componentWillMount() {
         get('/api/users/fio')
             .then((fioDto: Fields) => {
-                this.setState({ ...fioDto })
+                this.setState({...fioDto})
             })
             .catch(e => console.log(e));
     }
+
+    /*componentWillUpdate(nextProps, nextState) {
+     /!*Для каждого элемента массива если следующее состояние поля nextState[fieldName]
+     * не равно != текущему состоянию поля != this.state[fieldName] ,
+     * то устанавливаем в следующее состояниее стейта в fieldErrors[fieldName]
+     * сообщение из метода message(constraint: Constraint, value: string, regexSpecialTranslation?: string)
+     * // nextState.fieldErrors[fieldName] = message(constraints[fieldName], nextState[fieldName]);*!/
+     [
+     'firstName', 'secondName', 'middleName'
+     ].forEach(fieldName => {
+     if (nextState[fieldName] != this.state[fieldName]) {
+     nextState.fieldErrors[fieldName] = message(constraints[fieldName], nextState[fieldName]);
+     }
+     });
+     }*/
 
     componentWillUpdate(nextProps, nextState) {
         /*Для каждого элемента массива если следующее состояние поля nextState[fieldName]
@@ -103,13 +118,13 @@ export class Validation extends React.Component<any, State> {
          * то устанавливаем в следующее состояниее стейта в fieldErrors[fieldName]
          * сообщение из метода message(constraint: Constraint, value: string, regexSpecialTranslation?: string)
          * // nextState.fieldErrors[fieldName] = message(constraints[fieldName], nextState[fieldName]);*/
-        [
-            'firstName', 'secondName', 'middleName'
-        ].forEach(fieldName => {
-            if (nextState[fieldName] != this.state[fieldName]) {
-                nextState.fieldErrors[fieldName] = message(constraints[fieldName], nextState[fieldName]);
-            }
-        });
+
+        Object.keys(constraints) // instead ['firstName', 'secondName', 'middleName'] // когда воспадают имена
+            .forEach(fieldName => {
+                if (nextState[fieldName] != this.state[fieldName]) {
+                    nextState.fieldErrors[fieldName] = message(constraints[fieldName], nextState[fieldName]);
+                }
+            });
     }
 
     /*Для каждого элемента массива  устанавливаем в следующее состояниее стейта в fieldErrors[fieldName]
@@ -141,9 +156,9 @@ export class Validation extends React.Component<any, State> {
 
     render() {
         return (
-            <div style={ {backgroundColor: '#ffc900' } }>
+            <div style={ {backgroundColor: '#ffc900'} }>
                 {/*Home widget*/}
-                <HomeWidget title={ 'Validation widget' } >
+                <HomeWidget title={ 'Validation widget' }>
                     <div>
                         {/*Table*/}
                         <mui.Table fixedFooter={true} fixedHeader={ true } selectable={ false }
