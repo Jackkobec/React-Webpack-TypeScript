@@ -38,7 +38,7 @@ export class CustomMenu extends React.Component<any, any> {
                                     <li><a href="#">Tutorials</a>
                                         <ul>
                                             <li><a href="#">HTML/CSS</a></li>
-                                            <li><a href="#">jQuery</a></li>
+                                            <li><a href="#top">jQuery</a></li>
                                             <li><a href="#">Other</a>
                                                 <ul>
                                                     <li><a href="#">Stuff</a></li>
